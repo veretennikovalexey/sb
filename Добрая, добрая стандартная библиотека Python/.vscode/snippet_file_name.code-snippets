@@ -1,0 +1,26 @@
+{
+    "sqlite query template": {
+        "prefix": "sqsq",
+        "body": [
+            "import sqlite3 as sq",
+            "",
+            "db = \"${1:}\"",
+            "",
+            "sql = \"\"\"",
+            "${2:}",
+            "\"\"\"",
+            "",
+            "with sq.connect(db) as con:",
+            "    cur = con.cursor()",
+            "    cur.execute(sql)",
+            "",
+            "    sql = \"\"\"",
+            "    ${3:}",
+            "    \"\"\"",
+            "    result = cur.execute(sql).fetchall()",
+            "",
+            "con.close()"
+        ],
+        "description": "SQLite template with two SQL blocks"
+    }
+}
